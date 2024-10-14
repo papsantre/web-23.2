@@ -1,0 +1,26 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-start">
+        <div class="col-md-6">
+            <div class="card mt-4">
+                <h4>{{ title }}</h4>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-custom">
+                            {% if object %}
+                            Сохранить
+                            {% else %}
+                            Создать пост
+                            {% endif %}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
